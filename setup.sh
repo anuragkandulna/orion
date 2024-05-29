@@ -60,6 +60,35 @@ install_python_on_mac() {
 }
 
 
+# Function to install Python on Linux
+install_python_on_linux() {
+  # Check if Python is already installed
+  check_python_installed
+
+  # Update the packages
+  echo "Updating the package list..."
+  sudo apt update
+
+  # Install prerequisites
+  echo "Installing prerequisites..."
+  sudo apt install -y software-properties-common
+
+  # Add deadsnakes PPA for newer versions of Python
+  echo "Adding deadsnakes PPA..."
+  sudo add-apt-repository ppa:deadsnakes/ppa -y
+
+  # Update the packages again
+  echo "Updating the packages list again..."
+  sudo apt update
+
+  # Install latest version of Python 3
+  echo "Installing latest version of Python 3..."
+  sudo apt install -y python@3.12
+
+  # Verify the installation
+
+}
+
 
 # Simple script to initial setup
 PLATFORM="$(uname)"
