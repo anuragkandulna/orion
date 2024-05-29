@@ -73,25 +73,32 @@ install_python_on_linux() {
   # Install latest version of Python 3
   echo "Installing latest version of Python 3..."
   sudo apt install -y python@3.12
-
-  # Verify the installation
-
 }
 
 
-# Simple script to initial setup
+# ------------------------------------------ START HERE ----------------------------------------- #
+# Check the platform and based on it, start installation of python
 PLATFORM="$(uname)"
 echo $PLATFORM
 
 if [ "$PLATFORM" == "Darwin" ]; then
-	echo "Mac OS X detected"
+	echo "MacOS platform detected..."
+	install_python_on_mac
+
 elif [ "$PLATFORM" == "Linux" ]; then
-	echo "Linux detected"
+	echo "Linux platform detected..."
+	install_python_on_linux
+
 elif [ "$PLATFORM" == "MINGW*" ]; then
-	echo "Windows detected"
+	echo "Windows platform detected..."
+	echo "Python installation using CLI is unsupported. Please proceed from python website for manual steps..."
+	exit 0
+
 else
-	echo "Unrecognized platform detected"
+	echo "Unrecognized platform detected. Exiting with error code 1..."
+	exit 1
 fi
+
 
 # Verify Python after installation
 echo "Verify the Python installation..."
