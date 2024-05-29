@@ -19,6 +19,48 @@ check_python_installed() {
 }
 
 
+# Function to install homebrew
+install_homebrew() {
+	echo "Homebrew not found. Installing Homebrew..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+
+# Function to install Python on MacOS
+install_python_on_mac() {
+  # Check if Python is already installed
+	check_python_installed
+
+	# Install Homebrew if not found
+	if ! command -v brew &> /dev/null
+	then
+		install_homebrew
+	else
+		echo "Homebrew is already installed"
+	fi
+
+	# Update Homebrew
+	echo "Updating Homebrew..."
+	brew update
+
+	# Install latest version of Python 3.12
+	echo "Installing latest version of Python 3.12 ..."
+	brew install python@3.12
+
+	# Verify the installation
+	echo "Verify the Python installation..."
+	python3 --version
+
+	if [ $? -eq 0 ]; then
+		echo "Python 3 installation was successful."
+	else
+		echo "Python 3 installation failed."
+		exit 1
+	fi
+}
+
+
+
 # Simple script to initial setup
 PLATFORM="$(uname)"
 echo $PLATFORM
