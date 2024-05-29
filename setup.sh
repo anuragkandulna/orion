@@ -46,17 +46,6 @@ install_python_on_mac() {
 	# Install latest version of Python 3.12
 	echo "Installing latest version of Python 3.12 ..."
 	brew install python@3.12
-
-	# Verify the installation
-	echo "Verify the Python installation..."
-	python3 --version
-
-	if [ $? -eq 0 ]; then
-		echo "Python 3 installation was successful."
-	else
-		echo "Python 3 installation failed."
-		exit 1
-	fi
 }
 
 
@@ -104,3 +93,13 @@ else
 	echo "Unrecognized platform detected"
 fi
 
+# Verify Python after installation
+echo "Verify the Python installation..."
+python3 --version
+
+if [ $? -eq 0 ]; then
+	echo "Python 3 installation was successful."
+else
+	echo "Python 3 installation failed."
+	exit 1
+fi
