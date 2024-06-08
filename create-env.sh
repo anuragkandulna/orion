@@ -45,3 +45,9 @@ create_virtualenv() {
   fi
 
 }
+
+
+# ------------------------------------------ START HERE ----------------------------------------- #
+# Start python virtual environment creation
+check_python_installed
+create_virtualenv
