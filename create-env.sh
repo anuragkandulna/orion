@@ -35,4 +35,13 @@ create_virtualenv() {
     python -m venv $ENV
   fi
 
+  # Verify environment creation was success
+  if [ $? -eq 0 ]; then
+    echo "Successfully created virtual environment in directory: ${ENV}"
+
+  else
+    echo "Failed to create virtual environment. Exiting now!"
+    exit 1
+  fi
+
 }
