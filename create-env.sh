@@ -15,7 +15,7 @@ check_python_installed() {
 }
 
 create_virtualenv() {
-  local ENV="py-env-3.12"
+  local ENV=".pyenv312"
 
   # Cleaning up local v-environment
   if [ -d $ENV ]; then
