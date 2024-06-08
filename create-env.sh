@@ -5,15 +5,14 @@ check_python_installed() {
   if command -v python3 &> /dev/null
   then
     echo "Python 3 is already installed. Version: $(python3 --version)"
-
   elif command -v python &> /dev/null
   then
     echo "Python 3 is already installed. Version: $(python --version)"
-
   else
     echo "Python 3 is not installed. Please install Python 3."
     exit 1
   fi
+}
 
 create_virtualenv() {
   local ENV="py-env-3.12"
@@ -30,7 +29,6 @@ create_virtualenv() {
   if command -v python3 &> /dev/null
   then
     python3 -m venv $ENV
-
   else
     python -m venv $ENV
   fi
@@ -38,7 +36,6 @@ create_virtualenv() {
   # Verify environment creation was success
   if [ $? -eq 0 ]; then
     echo "Successfully created virtual environment in directory: ${ENV}"
-
   else
     echo "Failed to create virtual environment. Exiting now!"
     exit 1
