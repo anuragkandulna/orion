@@ -20,7 +20,7 @@ create_virtualenv() {
   # Cleaning up local v-environment
   if [ -d $ENV ]; then
     echo "Python Virtual environment ${ENV} already exist. Cleaning up the environment..."
-    rm -rf
+    rm -rf "${ENV}/"
     echo "Successfully cleared the old environment..."
   fi
 
