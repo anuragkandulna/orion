@@ -13,15 +13,15 @@ The idea is to develop a basic test automation framework to test full-stack web 
 3. Test Automation support using respective tools
 
 ## Start here
-1. If python v3.12 is not yet installed, then give permission to **initial-setup.sh** script and run.
+1. If python v3.12 is not yet installed, then give permission to **initial_setup.sh** script and run.
    Ignore, if correct python is already installed.
    ```
-   $ chmod +x initial-setup.sh
+   $ chmod +x initial_setup.sh
    $ ./initial-setup.sh
    ```
-2. Automate python local virtual environment using **create-env.sh** script.
+2. Automate python local virtual environment using **create_env.sh** script.
    ```
-   $ chmod +x create-env.sh
+   $ chmod +x create_env.sh
    $ ./create-env.sh
    ```
 3. Activate venv and verify its active:
