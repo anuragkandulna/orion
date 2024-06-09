@@ -52,8 +52,13 @@ check_python_installed
 create_virtualenv
 
 # Add ENV to .gitignore
-echo "Adding ${ENV} to ${GIT_IGNORE} file..."
-echo "" >> gitignore
-echo "# Python virtual environment created by Project Orion"
-echo "${ENV}/"
-echo "Successfully added dir ${ENV} to file ${GIT_IGNORE}"
+if grep -Fxq "${ENV}" $GIT_IGNORE
+then
+  echo "Adding ${ENV} to ${GIT_IGNORE} file..."
+  echo "" >> $GIT_IGNORE
+  echo "# Python virtual environment created by Project Orion" >> $GIT_IGNORE
+  echo "${ENV}/" >> $GIT_IGNORE
+  echo "Successfully added dir ${ENV} to file ${GIT_IGNORE}. Just commit the changes and push."
+else
+  echo "Python virtual environment dir ${ENV} already added to ${GIT_IGNORE} file!"
+fi
