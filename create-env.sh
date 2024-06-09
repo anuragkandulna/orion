@@ -15,8 +15,6 @@ check_python_installed() {
 }
 
 create_virtualenv() {
-  local ENV=".pyenv312"
-
   # Cleaning up local v-environment
   if [ -d $ENV ]; then
     echo "Python Virtual environment ${ENV} already exist. Cleaning up the environment..."
@@ -45,6 +43,17 @@ create_virtualenv() {
 
 
 # ------------------------------------------ START HERE ----------------------------------------- #
-# Start python virtual environment creation
+# Start python virtual environment creation with hidden dir .pyenv312
+ENV=".pyenv312"
+GIT_IGNORE=".gitignore"
+
+# Invoke functions to do the respective task
 check_python_installed
 create_virtualenv
+
+# Add ENV to .gitignore
+echo "Adding ${ENV} to ${GIT_IGNORE} file..."
+echo "" >> gitignore
+echo "# Python virtual environment created by Project Orion"
+echo "${ENV}/"
+echo "Successfully added dir ${ENV} to file ${GIT_IGNORE}"
